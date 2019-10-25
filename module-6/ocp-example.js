@@ -115,7 +115,7 @@ function withAdjustedFormatting(ComponentToWrap) {
 
     const adjustFormatting = format => settingsAdjustedFormat(locationAdjustedFormat(format))
 
-    return <ComponentToWrap adjustFormatting={adjustFormatting} {...restProps} />
+    return <ComponentToWrap {...restProps} adjustFormatting={adjustFormatting} />
   }
 
   return connect(mapStateToProps)(LocalizedFormatter)
