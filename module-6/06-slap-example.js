@@ -1,11 +1,10 @@
-# SLAP
+// # 💡 SLAP
 
-- 💡 Code within a given segment/block should be at the same level of abstraction.
-- 💡 Functions should do just one thing, and they should do it well. — Robert Martin
+// - 💡 Code within a given segment/block should be at the same level of abstraction.
+// - 💡 Functions should do just one thing, and they should do it well. — Robert Martin
 
-## Example
+// ## Example
 
-```javascript
 import React, {Component} from 'react'
 import './App.css'
 import {Message, Button, Form, Label, Segment, Grid} from 'semantic-ui-react'
@@ -208,4 +207,3 @@ class App extends Component {
 }
 
 export default App
-```
