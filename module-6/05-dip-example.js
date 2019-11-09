@@ -1,4 +1,4 @@
-// DIP
+// 💡 DIP
 
 import numeralJs from 'numeraljs'
 

@@ -1,4 +1,4 @@
-// ISP
+// 💡 ISP
 
 function Picture({
   pictureData,

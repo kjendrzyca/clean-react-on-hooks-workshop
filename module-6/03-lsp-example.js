@@ -1,4 +1,4 @@
-// LSP
+// 💡 LSP
 
 function SomeComponent() {
   return (
