@@ -1,4 +1,4 @@
-// OCP
+// 💡 OCP
 // High-level stuff: displaying the UI and markup
 // Low-level stuff: location, settings, ...
 // Protect high-level stuff from changes in low-level stuff
@@ -102,6 +102,26 @@ connect(mapStateToProps)(
 )
 
 // Solution (probably better in terms of OCP):
+
+// 1.
+// adjustFormatting is the key here.
+// Thanks to that the NumberFormatter is closed for modification (at least for now)
+// and open for extension - just pass the `adjustFormatting` function however you like and you are fine
+function NumberFormatter({
+  format,
+  number,
+  adjustFormatting,
+  className,
+}) {
+  const adjustedFormat = adjustFormatting(format)
+  return (
+    <div className={className}>
+      {numeralJs(adjustedFormat)(number)}
+    </div>
+  )
+}
+
+// 2.
 const mapStateToProps = state => ({
   displayNegativesInParenthesis: state.settings.displayNegativesInParenthesis,
 })
@@ -121,26 +141,10 @@ function withAdjustedFormatting(ComponentToWrap) {
   return connect(mapStateToProps)(LocalizedFormatter)
 }
 
-// AdjustFormatting is the key here.
-// Thanks to that the NumberFormatter is closed for modification (at least for now)
-// and open for extension - just pass the `adjustFormatting` function however you like and you are fine
-const AdjustedNumberFormatter = withAdjustedFormatting(
-  function NumberFormatter({
-    format,
-    number,
-    adjustFormatting,
-    className,
-  }) {
-    const adjustedFormat = adjustFormatting(format)
-    return (
-      <div className={className}>
-        {numeralJs(adjustedFormat)(number)}
-      </div>
-    )
-  }
-)
+// 3.
+const AdjustedNumberFormatter = withAdjustedFormatting(NumberFormatter)
 
-// usage:
+// 4. usage:
 function SimpleComponent({ number, location }) {
   return (
     <div>
