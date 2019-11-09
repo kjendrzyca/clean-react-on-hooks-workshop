@@ -1,4 +1,4 @@
-// SRP
+// 💡 SRP
 
 // Responsibility: formats the number as a string
 const numeralJs = format => number => formatNumber(format, number)
