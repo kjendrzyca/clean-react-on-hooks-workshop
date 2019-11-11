@@ -1,10 +1,11 @@
 import React from 'react';
 
+const getSize = () => ({
+  width: window.innerWidth,
+  height: window.innerHeight,
+})
+
 function useWindowSize() {
-  const getSize = () => ({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  })
 
   const [size, setSize] = React.useState(getSize)
 
@@ -13,7 +14,7 @@ function useWindowSize() {
 
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [getSize]) // 👈 Run only on mount and unmount
+  }, []) // 👈 Run only on mount and unmount
 
   return size
 }
