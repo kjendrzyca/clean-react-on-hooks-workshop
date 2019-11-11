@@ -1,27 +1,36 @@
 import React from 'react'
 
-// 👉 Todo: implement the useUndoableState hook.
-// You need to debounce the the change handler, this is how you debounce:
-
-// const handler = setTimeout(() => {
-//   // do something...
-// }, delay)
-// clearTimeout(handler) // <- cleanup
-
 function useUndoableState(initialValue, delay = 500) {
+  const [value, setValue] = React.useState(initialValue)
+
+  const [history, setHistory] = React.useState([])
+
+  const undo = () => {
+    const returnPoint = history[1]
+    setValue(returnPoint || '')
+    setHistory(history.slice(1))
+  }
+
+  const shouldSetNewValue = history[0] !== value
 
   React.useEffect(() => {
+    if (!value.length || !shouldSetNewValue) {
+      return
+    }
+    const handler = setTimeout(() => {
+      setHistory(oldHistory => [value, ...oldHistory])
+    }, delay)
 
-  }, [])
+    return () => {
+      clearTimeout(handler)
+    }
+  }, [delay, shouldSetNewValue, value])
 
-  // 👉 Uncomment when ready:
-  // return [value, setValue, undo]
+  return [value, setValue, undo]
 }
 
 export default function Editor() {
-  const [body, setBody] = React.useState('')
-  // 👉 Replace the above with:
-  // const [body, setBody, undo] = React.useUndoableState('')
+  const [body, setBody, undo] = useUndoableState('')
 
   const changeBody = event => setBody(event.target.value)
   const submitForm = () => alert(JSON.stringify({ body }))
@@ -43,13 +52,12 @@ export default function Editor() {
                 </textarea>
               </fieldset>
 
-              {/* 👉 Uncomment when ready: */}
-              {/* <button
+              <button
                 className="btn btn-lg btn-secondary mr-2"
                 type="button"
                 onClick={undo}>
                 Undo
-              </button> */}
+              </button>
 
               <button
                 className="btn btn-lg btn-primary"
