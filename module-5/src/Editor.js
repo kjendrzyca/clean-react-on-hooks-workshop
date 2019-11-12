@@ -1,10 +1,9 @@
 import React from 'react'
 
-function useUndoableState(initialValue, delay = 500) {
+export function useUndoableState(initialValue, delay = 500) {
   const [value, setValue] = React.useState(initialValue)
 
   const [history, setHistory] = React.useState([])
-
 
   const undo = () => {
     const returnPoint = history[1]
