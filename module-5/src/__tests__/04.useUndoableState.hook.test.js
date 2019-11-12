@@ -84,4 +84,18 @@ describe(`useUndoableState`, () => {
     // then
     expect(getValue()).toEqual('asdf')
   })
+
+  it(`should work when trying to undo what's undoable`, () => {
+    // given
+    const initialValue = ''
+    const {getValue, undo} = renderTheHook(initialValue)
+
+    // when
+    act(() => {
+      undo()
+    })
+
+    // then
+    expect(getValue()).toEqual(initialValue)
+  })
 })
