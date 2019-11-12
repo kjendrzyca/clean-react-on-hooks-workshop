@@ -5,7 +5,7 @@ const getSize = () => ({
   height: window.innerHeight,
 })
 
-function useWindowSize() {
+export function useWindowSize() {
   const [size, setSize] = React.useState(getSize)
 
   React.useEffect(() => {
