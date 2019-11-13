@@ -10,7 +10,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test --verbose"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -26,5 +26,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/react-hooks": "^3.2.1",
+    "react-test-renderer": "^16.11.0"
   }
 }
