@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 
-const Counter = function({saveCounterLocally, getInitialCounter, persistCounter}) {
+export const Counter = function({saveCounterLocally, getInitialCounter, persistCounter}) {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
@@ -26,5 +26,3 @@ const Counter = function({saveCounterLocally, getInitialCounter, persistCounter}
     <button onClick={() => setCount(count + 1)}>count</button>
   </div>
 }
-
-export default Counter

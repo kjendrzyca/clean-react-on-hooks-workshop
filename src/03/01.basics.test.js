@@ -1,16 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import {render, wait, fireEvent} from '@testing-library/react'
 
+import {Counter} from './01.basics'
+// import {Counter} from './final/01.basics'
+
 const BUTTON_TEXT = 'count'
-
-const Counter = function({saveCounterLocally, getInitialCounter, persistCounter}) {
-  // your Counter implementation(s) here
-
-  return <div>
-    <p>{/* count here */}</p>
-    <button onClick={() => {/* handler here */}}>count</button>
-  </div>
-}
 
 describe(`Counter`, () => {
   // you should consider: [someState, setSomeState] = useState() hook
