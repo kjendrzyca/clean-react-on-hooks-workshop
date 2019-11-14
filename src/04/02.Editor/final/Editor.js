@@ -26,11 +26,24 @@ function useUndoableState(initialValue, delay = 500) {
     }
   }, [delay, shouldSetNewValue, value])
 
-  return [value, setValue, undo]
+  const reset = React.useCallback(
+    () => {
+      setValue(initialValue)
+      setHistory([])
+    },
+    [initialValue]
+  )
+
+  return [
+    value,
+    setValue,
+    undo,
+    reset
+  ]
 }
 
 export default function Editor() {
-  const [body, setBody, undo] = useUndoableState('')
+  const [body, setBody, undo, reset] = useUndoableState('')
 
   const changeBody = event => setBody(event.target.value)
   const submitForm = () => alert(JSON.stringify({ body }))
@@ -48,21 +61,31 @@ export default function Editor() {
                   rows="8"
                   placeholder="Write something"
                   value={body}
-                  onChange={changeBody}>
-                </textarea>
+                  onChange={changeBody}
+                />
               </fieldset>
 
               <button
                 className="btn btn-lg btn-secondary mr-2"
                 type="button"
-                onClick={undo}>
+                onClick={undo}
+              >
                 Undo
+              </button>
+
+              <button
+                className="btn btn-lg btn-secondary mr-2"
+                type="button"
+                onClick={reset}
+              >
+                Reset
               </button>
 
               <button
                 className="btn btn-lg btn-primary"
                 type="button"
-                onClick={submitForm}>
+                onClick={submitForm}
+              >
                 Publish
               </button>
             </form>

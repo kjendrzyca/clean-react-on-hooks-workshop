@@ -16,6 +16,11 @@ function useUndoableState(initialValue, delay = 500) {
 
   // 👉 Uncomment when ready:
   // return [value, setValue, undo]
+
+  // 👉 (optional) Add reset function
+  // 👉 should be created only once and refreshed only when initial value changes
+  // Uncomment when ready:
+  // return [value, setValue, undo, reset]
 }
 
 export default function Editor() {
@@ -39,22 +44,33 @@ export default function Editor() {
                   rows="8"
                   placeholder="Write something"
                   value={body}
-                  onChange={changeBody}>
-                </textarea>
+                  onChange={changeBody}
+                />
               </fieldset>
 
               {/* 👉 Uncomment when ready: */}
               {/* <button
                 className="btn btn-lg btn-secondary mr-2"
                 type="button"
-                onClick={undo}>
+                onClick={undo}
+              >
                 Undo
+              </button> */}
+
+              {/* 👉 (optional) Uncomment when ready: */}
+              {/* <button
+                className="btn btn-lg btn-secondary mr-2"
+                type="button"
+                onClick={reset}
+              >
+                Reset
               </button> */}
 
               <button
                 className="btn btn-lg btn-primary"
                 type="button"
-                onClick={submitForm}>
+                onClick={submitForm}
+              >
                 Publish
               </button>
             </form>
