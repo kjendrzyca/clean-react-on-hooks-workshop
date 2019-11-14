@@ -2,7 +2,7 @@ import {renderHook, act} from '@testing-library/react-hooks'
 import {fireEvent} from '@testing-library/react'
 import {useWindowSize} from '../WindowSize'
 
-describe(`useWindowSize`, () => {
+describe.skip(`useWindowSize`, () => {
   it(`should return with default resolution`, () => {
     // given
     const DEFAULT_DOM_RESOLUTION = [1024, 768]

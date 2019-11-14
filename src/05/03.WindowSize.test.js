@@ -2,7 +2,7 @@ import React from 'react'
 import {render, fireEvent} from '@testing-library/react'
 import WindowSize from './WindowSize'
 
-describe(`WindowSize`, () => {
+describe.skip(`WindowSize`, () => {
   it(`should render with default resolution`, () => {
     // given
     const DEFAULT_DOM_RESOLUTION = '1024x768'

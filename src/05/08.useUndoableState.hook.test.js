@@ -5,7 +5,7 @@ jest.useFakeTimers()
 
 const runAllTimers = () => act(() => jest.runAllTimers())
 
-describe(`useUndoableState`, () => {
+describe.skip(`useUndoableState`, () => {
   it(`should return initial value`, () => {
     // given
     const initialValue = '';

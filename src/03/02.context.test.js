@@ -9,7 +9,7 @@ const BUTTON_TEXT = 'count'
 const increment = state => state + 1
 const decrement = state => state - 1
 
-describe(`ContextAwareCounter`, () => {
+describe.skip(`ContextAwareCounter`, () => {
   it(`should increment the count when clicking on button`, () => {
     // given
     const expectedCounterState = 2;

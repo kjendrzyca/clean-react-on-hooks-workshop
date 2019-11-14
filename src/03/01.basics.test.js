@@ -6,7 +6,7 @@ import {Counter} from './01.basics'
 
 const BUTTON_TEXT = 'count'
 
-describe(`Counter`, () => {
+describe.skip(`Counter`, () => {
   // you should consider: [someState, setSomeState] = useState() hook
   it(`should render button for counting and initial counter state`, () => {
     // given

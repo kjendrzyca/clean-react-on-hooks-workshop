@@ -9,7 +9,7 @@ const runAllTimers = () => act(() => jest.runAllTimers())
 // how to fire events: https://testing-library.com/docs/dom-testing-library/api-events
 // https://github.com/testing-library/dom-testing-library/blob/master/src/events.js
 
-describe(`Editor`, () => {
+describe.skip(`Editor`, () => {
   it(`should change textarea value`, () => {
     // given
     const newValue = 'Something new'

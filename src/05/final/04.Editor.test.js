@@ -6,7 +6,7 @@ jest.useFakeTimers()
 
 const runAllTimers = () => act(() => jest.runAllTimers())
 
-describe(`Editor`, () => {
+describe.skip(`Editor`, () => {
   it(`should change textarea value`, () => {
     // given
     const newValue = 'Something new'
