@@ -10,14 +10,14 @@ describe(`Editor`, () => {
   it(`should change textarea value`, () => {
     // given
     const newValue = 'Something new'
+    // Editor is rendered
 
     // when
-    const {getByPlaceholderText} = render(<Editor />)
-    const textArea = getByPlaceholderText('Write something')
-    fireEvent.change(textArea, { target: { value: newValue } })
+    // searching textarea by placeholder
+    // firing change event on the textarea with new value
 
     // then
-    expect(textArea.innerHTML).toEqual(newValue)
+    // text area innerHTML is equal new value
   })
 
   it(`should undo the change on textarea value`, async () => {
@@ -25,19 +25,19 @@ describe(`Editor`, () => {
     const newValue = 'Something new'
     const secondNewValue = 'Something new entirely'
 
-    const {getByPlaceholderText, getByText} = render(<Editor />)
-    const textArea = getByPlaceholderText('Write something')
-    fireEvent.change(textArea, { target: { value: newValue } })
-    runAllTimers()
+    // Editor is rendered
+    // searching textarea by placeholder
+    // firing change event on the textarea with new value
+    // time is passing by :)
 
-    fireEvent.change(textArea, { target: { value: secondNewValue } })
-    runAllTimers()
+    // firing change event on the textarea with second new value
+    // time is passing by :)
 
     // when
-    const undoButton = getByText('Undo')
-    fireEvent.click(undoButton)
+    // searching undo button by text
+    // clicking undo button
 
     // then
-    expect(textArea.innerHTML).toEqual(newValue)
+    // text area innerHTML is equal new value
   })
 })

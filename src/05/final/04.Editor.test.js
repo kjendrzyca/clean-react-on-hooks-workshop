@@ -10,9 +10,9 @@ describe(`Editor`, () => {
   it(`should change textarea value`, () => {
     // given
     const newValue = 'Something new'
+    const {getByPlaceholderText} = render(<Editor />)
 
     // when
-    const {getByPlaceholderText} = render(<Editor />)
     const textArea = getByPlaceholderText('Write something')
     fireEvent.change(textArea, { target: { value: newValue } })
 

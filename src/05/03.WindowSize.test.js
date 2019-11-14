@@ -8,10 +8,14 @@ describe(`WindowSize`, () => {
     const DEFAULT_DOM_RESOLUTION = '1024x768'
 
     // when
-    const {getByText} = render(<WindowSize />)
+    // rendering WindowSize
+    // you search by default resolution text
 
     // then
-    expect(getByText(DEFAULT_DOM_RESOLUTION)).not.toEqual(null)
+    // the element is there
+
+    // and there are diffrent kinds of api you could use (if you didn't know already)
+    // https://testing-library.com/docs/react-testing-library/cheatsheet
   })
 
   it(`should render with changed resolution when resizing`, () => {
@@ -19,14 +23,13 @@ describe(`WindowSize`, () => {
     const newWidth = 1000;
     const newHeight = 800
     const resolution = `${newWidth}x${newHeight}`
+    // WindowSize is rendered
 
     // when
-    const {getByText} = render(<WindowSize />)
-    window.innerWidth = newWidth
-    window.innerHeight = newHeight
-    fireEvent(window, new Event('resize'))
+    // firing window resize event
+    // when you search by new resolution text
 
     // then
-    expect(getByText(resolution)).not.toEqual(null)
+    // the element is there
   })
 })

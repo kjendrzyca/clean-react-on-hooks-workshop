@@ -19,9 +19,9 @@ describe(`WindowSize`, () => {
     const newWidth = 1000;
     const newHeight = 800
     const resolution = `${newWidth}x${newHeight}`
+    const {getByText} = render(<WindowSize />)
 
     // when
-    const {getByText} = render(<WindowSize />)
     window.innerWidth = newWidth
     window.innerHeight = newHeight
     fireEvent(window, new Event('resize'))
