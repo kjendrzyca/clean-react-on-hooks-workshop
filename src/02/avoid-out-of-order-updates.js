@@ -43,40 +43,6 @@ function Description ({itemId}) {
   return <p>{description}</p>
 }
 
-function Solution ({itemId}) {
-  const [loading, setLoading] = useState(true)
-  const [description, setDescription] = useState()
-
-  useEffect(() => {
-    let ignoreRequest = false
-    setLoading(true)
-
-    const get = async () => {
-      // asynchronous operation that takes time
-      const data = await getAfter({delay: artificialDelays[itemId], returnValue: descriptions[itemId]})
-
-      if (ignoreRequest) {
-        return
-      }
-
-      setDescription(data)
-      setLoading(false)
-    }
-
-    get()
-
-    return () => {
-      ignoreRequest = true
-    }
-  }, [itemId])
-
-  if (loading) {
-    return <p>loading...</p>
-  }
-
-  return <p>{description}</p>
-}
-
 // initial
 export default function () {
   const [itemId, setItem] = useState("item0")

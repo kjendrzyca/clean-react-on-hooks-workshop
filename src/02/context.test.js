@@ -1,5 +1,5 @@
-import React, {useContext, useState} from 'react'
-import {render, wait, fireEvent, act} from '@testing-library/react'
+import React from 'react'
+import {render, fireEvent} from '@testing-library/react'
 
 const BUTTON_TEXT = 'count'
 
@@ -7,7 +7,7 @@ const increment = state => state + 1
 const decrement = state => state - 1
 
 // initialize react context, with incrementation as default value
-const CounterContext = React.createContext(increment)
+const CounterContext = null
 
 const ContextAwareCounter = function() {
   // instructions:
@@ -19,12 +19,9 @@ const ContextAwareCounter = function() {
     // <button></button>
   // </div>
 
-  const [count, setCount] = useState(0)
-  const modifierFunction = useContext(CounterContext)
-
   return <div>
-    <p>{count}</p>
-    <button onClick={() => setCount(modifierFunction)}>count</button>
+    <p></p>
+    <button>count</button>
   </div>
 }
 

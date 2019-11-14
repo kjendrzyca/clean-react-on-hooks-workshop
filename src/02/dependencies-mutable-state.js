@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
 // you'll learn:
 // managing hook dependencies and reducing them by passing function to setState
@@ -28,55 +28,6 @@ export default function () {
   return (
     <>
       <p>{seconds}s</p>
-    </>
-  )
-}
-
-export const Task1Solution = function () {
-  const [seconds, setSeconds] = useState(0)
-
-  useEffect(() => {
-    console.log('interval effect')
-    const id = setInterval(() => {
-      console.log('running interval', id)
-      setSeconds(s => s + 1)
-    }, 1000);
-
-    return () => {
-      console.log('cleaning interval', id)
-      clearInterval(id);
-    };
-  }, []);
-
-  return (
-    <>
-      <p>{seconds}s</p>
-    </>
-  )
-}
-
-export const Task2Solution = function () {
-  const [seconds, setSeconds] = useState(0)
-  const intervalRef = useRef()
-
-  useEffect(() => {
-    console.log('interval effect')
-    const id = setInterval(() => {
-      console.log('running interval', id)
-      setSeconds(s => s + 1)
-    }, 1000);
-    intervalRef.current = id;
-
-    return () => {
-      console.log('cleaning interval', id)
-      clearInterval(id);
-    };
-  }, []);
-
-  return (
-    <>
-      <p>{seconds}s</p>
-      <button onClick={() => clearInterval(intervalRef.current)}>STAHP</button>
     </>
   )
 }
