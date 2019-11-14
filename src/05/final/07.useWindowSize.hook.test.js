@@ -19,9 +19,9 @@ describe(`useWindowSize`, () => {
     // given
     const newWidth = 1000;
     const newHeight = 800
+    const {result} = renderHook(() => useWindowSize())
 
     // when
-    const {result} = renderHook(() => useWindowSize())
     window.innerWidth = newWidth
     window.innerHeight = newHeight
     act(() => {
@@ -36,9 +36,9 @@ describe(`useWindowSize`, () => {
     // given
     const addSpy = jest.spyOn(window, 'addEventListener')
     const removeSpy = jest.spyOn(window, 'removeEventListener')
+    const {unmount} = renderHook(() => useWindowSize())
 
     // when
-    const {unmount} = renderHook(() => useWindowSize())
     act(() => {
       fireEvent(window, new Event('resize'))
     })
