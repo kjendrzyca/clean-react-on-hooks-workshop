@@ -36,6 +36,7 @@ describe(`useWindowSize`, () => {
     // hook is rendered
 
     // when
+    // rerendering hook
     // unmounting hook
 
     // then

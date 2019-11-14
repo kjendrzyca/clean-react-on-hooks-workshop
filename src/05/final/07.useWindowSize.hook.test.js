@@ -36,12 +36,13 @@ describe(`useWindowSize`, () => {
     // given
     const addSpy = jest.spyOn(window, 'addEventListener')
     const removeSpy = jest.spyOn(window, 'removeEventListener')
-    const {unmount} = renderHook(() => useWindowSize())
+    const {unmount, rerender} = renderHook(() => useWindowSize())
 
     // when
     act(() => {
       fireEvent(window, new Event('resize'))
     })
+    rerender();
     unmount();
 
     // then
