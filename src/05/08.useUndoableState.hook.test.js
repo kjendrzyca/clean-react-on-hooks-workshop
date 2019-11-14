@@ -42,7 +42,7 @@ describe(`useUndoableState`, () => {
     // hook value is equal initial value
   })
 
-  // IMPORTANT: ask me for advice if you reached this point
+  // ❗ IMPORTANT: ask me for advice if you reached this point
 
   it(`should undo when the value was changed twice`, () => {
     // given
@@ -68,5 +68,30 @@ describe(`useUndoableState`, () => {
 
     // then
     // hook value is equal initial value
+  })
+
+  it(`should reset value`, () => {
+    // given
+    // hook is rendered with initial value
+    // you set value once
+    // time is passing by :)
+
+    // when
+    // calling reset
+
+    // then
+    // hook value is equal initial value
+  })
+
+  it(`should reset value to updated initial value`, () => {
+    // given
+    // hook is rendered with initial value
+
+    // when
+    // rerendering hook with new initial value
+    // and calling reset
+
+    // then
+    // // hook value is equal NEW initial value
   })
 })

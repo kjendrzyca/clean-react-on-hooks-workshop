@@ -54,12 +54,17 @@ describe(`useUndoableState`, () => {
     expect(value).toEqual(initialValue)
   })
 
-  const renderTheHook = () => {
-    const {result} = renderHook(() => useUndoableState(''))
+  const renderTheHook = (initialValue = '') => {
+    const {result, rerender} = renderHook(
+      props => useUndoableState(props), { initialProps: initialValue }
+    )
+
     return {
       getValue: () => result.current[0],
       setValue: value => result.current[1](value),
       undo: () => result.current[2](),
+      reset: () => result.current[3](),
+      rerender,
     }
   }
 
@@ -97,5 +102,40 @@ describe(`useUndoableState`, () => {
 
     // then
     expect(getValue()).toEqual(initialValue)
+  })
+
+  it(`should reset value`, () => {
+    // given
+    const initialValue = ''
+    const {getValue, setValue, reset} = renderTheHook(initialValue)
+
+    act(() => {
+      setValue('asdf')
+    })
+    runAllTimers();
+
+    // when
+    act(() => {
+      reset()
+    })
+
+    // then
+    expect(getValue()).toEqual(initialValue)
+  })
+
+  it(`should reset value to updated initial value`, () => {
+    // given
+    const initialValue = ''
+    const newInitialValue = 'hello there'
+    const {getValue, reset, rerender} = renderTheHook(initialValue)
+
+    // when
+    rerender(newInitialValue)
+    act(() => {
+      reset()
+    })
+
+    // then
+    expect(getValue()).toEqual(newInitialValue)
   })
 })
