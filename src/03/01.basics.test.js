@@ -1,33 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import {render, wait, fireEvent, act} from '@testing-library/react'
+import {render, wait, fireEvent} from '@testing-library/react'
 
 const BUTTON_TEXT = 'count'
 
 const Counter = function({saveCounterLocally, getInitialCounter, persistCounter}) {
   // your Counter implementation(s) here
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    saveCounterLocally(count)
-  }, [count, saveCounterLocally])
-
-  useEffect(() => {
-    persistCounter(count)
-  }, [count, persistCounter])
-
-  useEffect(() => {
-    const get = async () => {
-      const result = await getInitialCounter()
-
-      setCount(result)
-    }
-
-    get()
-  }, [getInitialCounter])
 
   return <div>
-    <p>{count}</p>
-    <button onClick={() => setCount(count + 1)}>count</button>
+    <p>{/* count here */}</p>
+    <button onClick={() => {/* handler here */}}>count</button>
   </div>
 }
 
