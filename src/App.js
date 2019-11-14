@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
-import Timer from './02/dependencies-mutable-state.js'
-import Descriptions from './02/avoid-out-of-order-updates.js'
+import Timer from './03/dependencies-mutable-state.js'
+import Descriptions from './03/avoid-out-of-order-updates.js'
 
 import './App.css';
 
