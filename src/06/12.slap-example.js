@@ -1,8 +1,5 @@
 // # 💡 SLAP
 
-// - 💡 Code within a given segment/block should be at the same level of abstraction.
-// - 💡 Functions should do just one thing, and they should do it well. — Robert Martin
-
 // ## Example
 
 import React, {Component} from 'react'
