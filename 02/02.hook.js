@@ -1,12 +1,17 @@
 // 👉 Hook example:
+import React from 'react'
 
 function HookExample() {
   const [count, setCount] = React.useState(0);
+  const onClickHandler = React.useCallback(
+    () => setCount(count + 1),
+    [count],
+  )
 
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
+      <button onClick={onClickHandler}>
         Click me
       </button>
     </div>

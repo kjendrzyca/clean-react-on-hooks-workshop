@@ -6,7 +6,7 @@ import React, {useRef, useEffect, useState} from 'react'
 
 
 // TODO Create only one interval in the browser, when the timer is mounted and that is cleaned up when the timer is unmounted (you can unmount/mount using the `toggle timer rendering` button)
-// TODO Create a "stop timer" button, that clears the interval and just renders the last state of the timer.
+// TODO Create a "stop timer" button, that clears the interval and just renders the last state of the timer. (useRef)
 
 // initial
 export default function () {
