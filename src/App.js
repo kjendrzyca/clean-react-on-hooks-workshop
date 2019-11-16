@@ -1,9 +1,12 @@
 import React, {useState} from 'react';
 
 import Timer from './03/03.dependencies-mutable-state'
-import Descriptions from './03/04.avoid-out-of-order-updates'
+// import Description from './03/04.avoid-out-of-order-updates'
 
-// import Editor from './04/02.Editor/final/Editor.js';
+import WindowSize from './04/01.WindowSize/WindowSize';
+// import FinalWindowSize from './04/01.WindowSize/final/WindowSize';
+// import Editor from './04/02.Editor/Editor';
+// import FinalEditor from './04/02.Editor/final/Editor';
 
 import './App.css';
 
@@ -31,7 +34,9 @@ function App() {
         <button onClick={() => setRenderTimer(render => !render)}>toggle timer rendering</button>
         {renderTimer && <Timer/>}
       </section>
-      <section>
+
+      {/* TODO Uncomment later */}
+      {/* <section>
         <h2>Avoid out of order updates</h2>
         <p>
           Imagine you are getting data from backend (asynchronously) whenever some prop changes.<br/>
@@ -43,8 +48,8 @@ function App() {
         <p>
           Change the useEffect hook implementation to ignore state update of earlier response if a new request was made.
         </p>
-        <Descriptions />
-      </section>
+        <Description />
+      </section> */}
     </div>
   );
 }

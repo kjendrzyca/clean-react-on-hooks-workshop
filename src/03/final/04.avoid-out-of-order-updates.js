@@ -18,22 +18,31 @@ const getAfter = ({delay, returnValue}) => new Promise(resolve => {
 
 // TODO Change the useEffect hook implementation to ignore state update of earlier response if a new request was made.
 
-function Description ({itemId}) {
+function Solution ({itemId}) {
   const [loading, setLoading] = useState(true)
   const [description, setDescription] = useState()
 
   useEffect(() => {
+    let ignoreRequest = false
     setLoading(true)
 
     const get = async () => {
       // asynchronous operation that takes time
       const data = await getAfter({delay: artificialDelays[itemId], returnValue: descriptions[itemId]})
 
+      if (ignoreRequest) {
+        return
+      }
+
       setDescription(data)
       setLoading(false)
     }
 
     get()
+
+    return () => {
+      ignoreRequest = true
+    }
   }, [itemId])
 
   if (loading) {
@@ -48,7 +57,7 @@ export default function () {
   const [itemId, setItem] = useState("item0")
 
   return <>
-    <Description itemId={itemId} />
+    <Solution itemId={itemId} />
     <button onClick={() => setItem("item0")}>item 0</button>
     <button onClick={() => setItem("item1")}>item 1 - 2 seconds</button>
     <button onClick={() => setItem("item2")}>item 2 - 200 milliseconds</button>
